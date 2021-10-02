@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="container tables">
+        
+        <h2 class="mb-3"> Contenido de administrador </h2>
+        <hr>
+        
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">#</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% subcategorys.forEach(subcategory => { %> 
+                    <tr> <!-- table-row -->
+                        <th scope="row"><%= subcategory.id %></th>
+                        <td>
+                            <form action="/admin/subcategory/update/<%= subcategory.id %>?_method=PUT" method="POST"> <!-- editar subcategoria -->
+                                <div class="d-flex">
+                                    <input type="text" name="name" value="<%= subcategory.name %>" class="form-control">
+                                    <button type="submit" class="mx-3 update"> update </button>
+                                </div>
+                            </form>
+                        </td>
+                        <td><%= subcategory.fk_category.name %></td>
+                        <td>
+                            <form action="/admin/subcategory/remove/<%= subcategory.id %>?_method=DELETE" method="POST"> <!-- eliminar subcategoria -->
+                                <button type="submit" class="delete"> delete </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %> 
+                </tbody>
+            </table>
+        </div>
+        
+        
+        <form action="/admin/subcategory/create" method="POST"> <!-- crear subcategoria -->
+
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categorias</label>
+                <select class="form-select" aria-label="Default select example" id="categoria" name="categoryId">
+                    <option selected hidden>Asigna una categoria</option>
+                    <% categorys.forEach(category => { %>
+                        <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }) %> 
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Subcategoria</label>
+                <input type="name" name="name" class="form-control" id="name" placeholder="Nombre de la nueva subcategoria">
+            </div>
+            
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success"> Crear </button>
+            </div>
+        </form>
+        
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <%- include('../partials/scripts') %>
+    
+</body>
+</html>

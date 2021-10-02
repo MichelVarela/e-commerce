@@ -1,0 +1,36 @@
+:root {
+    --color-info: #cff4fc;
+    --color-danger: #f8d7da;
+}
+
+/* rows */
+main.tables .table tbody tr:nth-child(odd) {
+    background-color: var(--color-info);
+}
+
+main.tables .table tbody tr:nth-child(even) {
+    background-color: var(--color-danger);
+}
+
+/* buttons */
+main.tables .table button.update {
+    padding: .2rem .8rem;
+    border-radius: 1rem;
+    background-color: var(--colorCeleste);
+}
+
+main.tables .table button.update:hover {
+    background-color: #66a079;
+    transition: ease .3s;
+}
+
+main.tables .table button.delete {
+    padding: .2rem .8rem;
+    border-radius: 1rem;
+    background-color: #f76f6f;
+}
+
+main.tables .table button.delete:hover {
+    background-color: #f35555;
+    transition: ease .3s;
+}

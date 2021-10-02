@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("../partials/head") %> 
+<body>
+    <%- include("../partials/header") %>
+    
+    <main class="container auth">
+        
+        <h2 class="mb-5">Editando datos...</h2>
+        
+        <form action="/users/update/<%= result.id %>/<%= result.username %>?_method=PUT" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" name="username" class="form-control" id="username" value="<%= result.username %>">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" name="name" class="form-control" id="name" value="<%= result.name %>">
+            </div>
+            <div class="mb-3">
+                <label for="surname" class="form-label">Apellido</label>
+                <input type="text" name="surname" class="form-control" id="surname" value="<%= result.surname %>">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" value="<%= result.email %>" disabled>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success"> Confirmar </button>
+            </div>
+        </form>
+        
+    </main>
+    
+    <%- include("../partials/footer") %> 
+
+    <%- include('../partials/scripts') %>
+</body>
+</html>

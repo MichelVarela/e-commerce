@@ -1,0 +1,9 @@
+main.profile a i {
+    font-size: 2.3rem;
+    transition: ease .3s;
+}
+
+main.profile a i:hover {
+    transform: scale(1.1);
+    transition: ease .3s;
+}

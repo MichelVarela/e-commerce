@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="container tables">
+        
+        <h2 class="mb-3"> Contenido de administrador </h2>
+        <hr>
+
+        <a href="/products/register" class="btn btn-primary"> Cargar productos </a>
+        <hr>
+        
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Descuento</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Envio</th>
+                <th scope="col">Destacado</th>
+                <th scope="col">Activo</th>
+                <th scope="col">#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% products.forEach(result => { %> 
+              <tr>
+                <th scope="row"><%= result.id %></th>
+                <td><a href=""><%= result.name %></a></td>
+                <td>$<%= toThousand(result.price) %></td>
+                <td>
+                  <% if (result.discount == 0){ %>
+                    <i class="fas fa-times"></i>
+                  <% } else { %>
+                    <%= result.discount %>% 
+                  <% } %>
+                </td>
+                <td><%= result.stock %>u.</td>
+                <td>
+                  <% if (result.shipping == 0){ %>
+                    <i class="fas fa-times"></i>
+                  <% } else { %>
+                    <i class="fas fa-check"></i>
+                  <% } %> 
+                </td>
+                <td>
+                  <% if (result.featured == 0){ %>
+                    <i class="fas fa-times"></i>
+                  <% } else { %>
+                    <i class="fas fa-check"></i>
+                  <% } %>
+                </td>
+                <td>
+                    <form action="/products/update/<%= result.id %>?_method=PUT" method="POST">
+                        <div class="d-flex">
+                          <% if (result.active == 1) { %> <!-- active --> 
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="active" id="active-<%= result.id %>" value="1" checked>
+                              <label class="form-check-label" for="active-<%= result.id %>"><i class="fas fa-check"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="active" id="no-active-<%= result.id %>" value="0">
+                              <label class="form-check-label" for="no-active-<%= result.id %>"><i class="fas fa-times"></i></label>
+                            </div>
+                            
+                            <% } else { %> <!-- no active -->
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="active" id="active-<%= result.id %>" value="1">
+                                <label class="form-check-label" for="active-<%= result.id %>"><i class="fas fa-check"></i></label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="active" id="no-active-<%= result.id %>" value="0" checked>
+                                <label class="form-check-label" for="no-active-<%= result.id %>"><i class="fas fa-times"></i></label>
+                              </div>
+                              
+                            <% } %>
+                            <button type="submit" class="update"> update </button>  
+                        </div>
+                      </form>
+                </td>
+                <td>
+                    <form action="/products/remove/<%= result.id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="delete"> delete </button>
+                    </form>
+                </td>
+              </tr>
+              <% }) %> 
+            </tbody>
+          </table>
+        </div>
+        
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <%- include('../partials/scripts') %>
+    
+</body>
+</html>

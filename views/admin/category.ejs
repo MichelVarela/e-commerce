@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="container tables">
+        
+        <h2 class="mb-3"> Contenido de administrador </h2>
+        <hr>
+        
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estado (activo, in-activo)</th>
+                <th scope="col">#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% categorys.forEach(category => { %> 
+              <tr> <!-- table-row -->
+                <th scope="row"><%= category.id %></th>
+                <form action="/admin/category/update/<%= category.id %>?_method=PUT" method="POST"> <!-- editar categoria -->
+                  <td>
+                    <input type="text" name="name" value="<%= category.name %>" class="form-control">
+                  </td>
+                  <td>
+                    
+                    <div class="d-flex align-items-center">
+                      <% if (category.active == 0) { %> 
+                          <input type="checkbox" name="active" id="active">
+                      <% } else { %>
+                          <input type="checkbox" name="active" id="active" checked>
+                      <% } %>
+                      <button type="submit" class="update mx-3"> update </button>
+                    </div>
+                    
+                  </td>
+                </form> 
+                <td>
+                  <form action="/admin/category/remove/<%= category.id %>?_method=DELETE" method="POST"> <!-- eliminar categoria -->
+                    <button type="submit" class="delete"> delete </button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        
+        <form action="/admin/category/create" method="POST"> <!-- crear categoria -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Categoria</label>
+                <input type="name" name="name" class="form-control" id="name" placeholder="Nombre de la nueva categoria">
+            </div>
+            
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success"> Crear </button>
+            </div>
+        </form>
+        
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <%- include('../partials/scripts') %>
+    
+</body>
+</html>

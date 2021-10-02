@@ -1,0 +1,9 @@
+.brands .brand-content {
+    padding: 1rem;
+}
+
+.brands img {
+    width: 8rem;
+    height: 3rem;
+    object-fit: cover;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("./partials/head") %> 
+<body>
+  <%- include("./partials/header") %>
+
+  <div class="banner">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/images/banners/banner01.jpg" alt="...">
+          <div class="carousel-caption">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/images/banners/banner02.jpg" alt="...">
+          <div class="carousel-caption">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/images/banners/banner03.jpg" alt="...">
+          <div class="carousel-caption">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="brands">
+    <div class="glider-contain">
+      <div class="glider">
+        <div class="brand-content"><img src="/images/brands/asus.png" alt=""></div>
+        <div class="brand-content"><img src="/images/brands/asus.png" alt=""></div>
+        <div class="brand-content"><img src="/images/brands/asus.png" alt=""></div>
+        <div class="brand-content"><img src="/images/brands/asus.png" alt=""></div>
+      </div>
+    
+      <button aria-label="Previous" class="glider-prev">«</button>
+      <button aria-label="Next" class="glider-next">»</button>
+    </div>
+  </div>
+
+  <hr class="container">
+
+  <main class="container home">
+
+    <h2 class="mb-5">Nuestra recomendadas</h2>
+
+    <div class="product-featured">
+      <div class="glider-contain">
+        <div class="glider">
+          <% products.forEach(product => { %>
+            <a href="#">
+              <div class="featured-content">
+                <img src="/images/products/<%= product.fk_image[0].name %>" alt="Photo of">
+                <hr>
+                <div class="data-product">
+                  <h2 class="d-flex align-items-center">$<%= toThousand(product.price) %> <span class="text-success"> <%= product.discount == 0 ? null : `${product.discount}%` %> </span>
+                  </h2>
+                  <h4><%= product.name %></h4>
+                  <p><%= product.description %></p>
+                </div>
+              </div>
+            </a>
+          <% }) %>
+        </div>
+      
+        <button aria-label="Previous" class="glider-prev">«</button>
+        <button aria-label="Next" class="glider-next">»</button>
+        <div role="tablist" class="dots"></div>
+      </div>
+    </div>
+
+
+  </main>
+
+  <%- include("./partials/footer") %> 
+  
+  <%- include("./partials/scripts") %> 
+</body>
+</html>

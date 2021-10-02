@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="container profile">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
+                <div class="data-user">
+                    <i class="fas fa-user"></i> <%= result.username %> 
+                </div>
+                <a href="/users/update/<%= result.id %>/<%= result.username %>">
+                    <i class="fas fa-pen-square text-success"></i>
+                </a>
+            <li class="list-group-item"><%= result.name %></li>
+            <li class="list-group-item"><%= result.surname %></li>
+            <li class="list-group-item"><%= result.email %></li>
+            <li class="list-group-item text-end">
+                <form action="/users/remove/<%= result.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                </form>
+            </li>
+          </ul>
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <%- include('../partials/scripts') %>
+    
+</body>
+</html>

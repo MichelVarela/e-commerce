@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %> 
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="container tables">
+        
+        <h2 class="mb-3"> Contenido de administrador </h2>
+        <hr>
+        
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(result => { %> 
+              <tr>
+                <th scope="row"><%= result.id %></th>
+                <td><%= result.username %></td>
+                <td><%= result.name %></td>
+                <td><%= result.surname %></td>
+                <td>
+                  <form action="/admin/users/update/<%= result.id %>?_method=PUT" method="POST">
+                    <div class="d-flex">
+                      <% if (result.category == 1) { %> <!-- administrador --> 
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="category" id="admin-<%= result.id %>" value="1" checked>
+                          <label class="form-check-label" for="admin-<%= result.id %>">admin</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="category" id="user-<%= result.id %>" value="0">
+                          <label class="form-check-label" for="user-<%= result.id %>">user</label>
+                        </div>
+                        
+                        <% } else { %> <!-- usuario -->
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="category" id="admin-<%= result.id %>" value="1">
+                            <label class="form-check-label" for="admin-<%= result.id %>">admin</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="category" id="user-<%= result.id %>" value="0" checked>
+                            <label class="form-check-label" for="user-<%= result.id %>">user</label>
+                          </div>
+                          
+                        <% } %>
+                        <button type="submit" class="update"> update </button>  
+                    </div>
+                  </form>
+                </td>
+                <td>
+                  <form action="/admin/users/remove/<%= result.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="delete"> delete </button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %> 
+            </tbody>
+          </table>
+        </div>
+        
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <%- include('../partials/scripts') %>
+    
+</body>
+</html>

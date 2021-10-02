@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("../partials/head") %> 
+<body>
+    <%- include("../partials/header") %>
+    
+    <main class="container auth">
+        
+        <h2 class="mb-5">Bienvenido un gusto que seamos amigos/as</h2>
+        
+        <form action="/users/create" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" name="username" class="form-control" id="username">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email">
+            </div>
+            <div class="mb-3">
+                <label for="confirm-email" class="form-label">Confirmar email</label>
+                <input type="email" name="confirm-email" class="form-control" id="confirm-email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" name="password" class="form-control" id="password">
+            </div>
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">Confirmar contraseña</label>
+                <input type="password" name="confirm-password" class="form-control" id="confirm-password">
+            </div>
+            
+            <p>¿ Ya estas registrado ? <a href="/users/login">Click aquí</a></p>
+            
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success"> Registrarme </button>
+            </div>
+        </form>
+        
+    </main>
+    
+    <%- include("../partials/footer") %>
+
+    <%- include('../partials/scripts') %>
+</body>
+</html>

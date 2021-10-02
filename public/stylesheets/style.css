@@ -1,0 +1,70 @@
+@import "./header.css";
+@import "./footer.css";
+
+@import "./home/banner.css";
+@import "./home/brands.css";
+@import "./home/product-featured.css";
+
+@import "./users/auth.css";
+@import "./users/profile.css";
+
+@import "./admin/tables.css";
+
+@import "./disabled.css";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 1rem;
+	background-color: whitesmoke;
+}
+
+:root {
+	--colorAzul: #4B778D;
+	--colorTurquesa: #28B5B5;
+	--colorCeleste: #8FD9A8;
+	--colorVerde: #D2E69C;
+	--colorNegro: #212121;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	border: none;
+}
+
+textarea {
+	resize: none;
+}
+
+main {
+	margin: 5rem 0;
+}
+
+/* arrow indicadores */
+.glider-prev {
+	position: absolute;
+	top: 35%;
+	left: 0;
+	z-index: 0;
+}
+
+.glider-next {
+	position: absolute;
+	top: 35%;
+	right: 0;
+	z-index: 0;
+}
+
+
+

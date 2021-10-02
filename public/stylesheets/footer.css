@@ -1,0 +1,9 @@
+footer {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    color: #fff;
+    background-color: var(--colorNegro);
+}

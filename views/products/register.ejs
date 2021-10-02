@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("../partials/head") %> 
+<body>
+    <%- include("../partials/header") %>
+    
+    <main class="container products">
+        
+        <h2 class="mb-5">Contenido de administrador...</h2>
+        
+        <form action="/products/create" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre del producto</label>
+                <input type="text" name="name" class="form-control" id="name">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Precio</label>
+                <input type="number" name="price" class="form-control" id="price">
+            </div>
+
+            <div class="mb-3">
+                <label for="discount" class="form-label">Descuento</label>
+                <input type="number" name="discount" class="form-control" id="discount">
+            </div>
+
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" name="stock" class="form-control" id="stock">
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Descripción</label>
+                <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Categorias</label>
+                <select class="form-select" id="category" name="category">
+                    <option selected hidden>Asigna una categoria</option>
+                    <% categorys.forEach(category => { %>
+                        <option value="<%= category.id %>"><%= category.name %></option>
+                    <% }) %> 
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="subcategory" class="form-label">Subcategorias</label>
+                <select class="form-select" name="subcategoryId" id="subcategory">
+                    <option selected hidden>Asigna una subcategoria</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Cargar imagenes</label>
+                <input class="form-control" type="file" name="img" id="formFileMultiple" multiple>
+            </div>
+            
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success"> Crear </button>
+            </div>
+        </form>
+        
+    </main>
+    
+    <%- include("../partials/footer") %>
+    
+    <%- include('../partials/scripts') %>
+    <script src="/javascripts/subcategorys.js"></script> 
+</body>
+</html>
