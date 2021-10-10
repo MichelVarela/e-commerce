@@ -95,25 +95,19 @@ module.exports = {
     },
     subcategory: (req,res) => {
 
-        let category = db.Category.findAll();
-        let subcategory = db.Subcategory.findAll({
-            include: [{ association: "fk_category"}]
-        });
-
-        Promise.all([category, subcategory])
-        .then(([categorys, subcategorys]) => {
-            res.render("./admin/subcategory", {categorys, subcategorys});
+        db.Subcategory.findAll()
+        .then(subcategorys => {
+            res.render("./admin/subcategory", {subcategorys});
         })
         .catch(error => console.log(error));
         
     },
     create_subcategory: (req,res) => {
 
-        const {name, categoryId} = req.body;
+        const {name} = req.body;
 
         db.Subcategory.create({
-            name: name.trim(),
-            categoryId: categoryId //? categoryId : "error" 
+            name: name.trim() 
         })
         .then(() => {
             res.redirect("/admin/subcategory");
@@ -150,13 +144,40 @@ module.exports = {
         })
         .catch(error => console.log(error));
     },
+    associate: (req,res) => {
+        
+        let associate = db.Category_subcategory.findAll({
+            include: [{ association: "fk_category"}, { association: "fk_subcategory"}]
+        });
+        let category = db.Category.findAll();
+        let subcategory = db.Subcategory.findAll();
+
+        Promise.all([associate, category, subcategory])
+        .then(([associate, categorys, subcategorys]) => {
+            res.render("./admin/associate", {associate, categorys, subcategorys});
+        })
+        .catch(error => console.log(error));
+    },
+    process_associate: (req,res) => {
+
+        const {categoryId, subcategoryId} = req.body;
+
+        db.Category_subcategory.create({
+            categoryId,
+            subcategoryId
+        })
+        .then(() => {
+            res.redirect("/admin/associate");
+        })
+        .catch(error => console.log(error));
+    },
     products_list: (req,res) => {
 
         db.Product.findAll()
         .then(products => {
             res.render("./admin/products", {products, toThousand});
         })
-
+        .catch(error => console.log(error));
     },
     products_update: (req,res) => {
 

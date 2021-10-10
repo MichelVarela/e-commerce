@@ -32,7 +32,7 @@ module.exports = {
       active: {
         type: Sequelize.BOOLEAN
       },
-      subcategoryId: {
+      categoryId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

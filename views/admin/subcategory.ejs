@@ -15,7 +15,6 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Categoria</th>
                     <th scope="col">#</th>
                   </tr>
                 </thead>
@@ -31,7 +30,6 @@
                                 </div>
                             </form>
                         </td>
-                        <td><%= subcategory.fk_category.name %></td>
                         <td>
                             <form action="/admin/subcategory/remove/<%= subcategory.id %>?_method=DELETE" method="POST"> <!-- eliminar subcategoria -->
                                 <button type="submit" class="delete"> delete </button>
@@ -45,16 +43,6 @@
         
         
         <form action="/admin/subcategory/create" method="POST"> <!-- crear subcategoria -->
-
-            <div class="mb-3">
-                <label for="categoria" class="form-label">Categorias</label>
-                <select class="form-select" aria-label="Default select example" id="categoria" name="categoryId">
-                    <option selected hidden>Asigna una categoria</option>
-                    <% categorys.forEach(category => { %>
-                        <option value="<%= category.id %>"><%= category.name %></option>
-                    <% }) %> 
-                </select>
-            </div>
 
             <div class="mb-3">
                 <label for="name" class="form-label">Subcategoria</label>

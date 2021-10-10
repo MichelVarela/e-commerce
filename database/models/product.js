@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Product.belongsTo(models.Subcategory, {
-        as: "fk_subcategory",
-        foreignKey: "subcategoryId"
+      Product.belongsTo(models.Category_subcategory, {
+        as: "fk_category_subcategory",
+        foreignKey: "categoryId"
       });
 
       Product.hasMany(models.Image, {
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     shipping: DataTypes.BOOLEAN,
     featured: DataTypes.BOOLEAN,
     active: DataTypes.BOOLEAN,
-    subcategoryId: DataTypes.INTEGER
+    categoryId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Product',

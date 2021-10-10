@@ -11,21 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Subcategory.belongsTo(models.Category, {
-        as: "fk_category",
-        foreignKey: "categoryId"
-      });
-
-      Subcategory.hasMany(models.Product, {
+      Subcategory.belongsToMany(models.Category_subcategory, {
         as: "fk_subcategory",
-        foreignKey: "subcategoryId"
+        through: "Category_subcategories",
+        foreignKey: "subcategoryId",
+        otherKey: "categoryId"
       });
 
     }
   };
   Subcategory.init({
-    name: DataTypes.STRING,
-    categoryId: DataTypes.INTEGER
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Subcategory',

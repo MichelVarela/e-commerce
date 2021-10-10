@@ -36,7 +36,7 @@
 
             <div class="mb-3">
                 <label for="category" class="form-label">Categorias</label>
-                <select class="form-select" id="category" name="category">
+                <select class="form-select" id="category" name="categoryId">
                     <option selected hidden>Asigna una categoria</option>
                     <% categorys.forEach(category => { %>
                         <option value="<%= category.id %>"><%= category.name %></option>
@@ -48,6 +48,9 @@
                 <label for="subcategory" class="form-label">Subcategorias</label>
                 <select class="form-select" name="subcategoryId" id="subcategory">
                     <option selected hidden>Asigna una subcategoria</option>
+                    <% subcategorys.forEach(subcategory => { %>
+                        <option value="<%= subcategory.id %>"><%= subcategory.name %></option>
+                    <% }) %> 
                 </select>
             </div>
 
@@ -66,6 +69,5 @@
     <%- include("../partials/footer") %>
     
     <%- include('../partials/scripts') %>
-    <script src="/javascripts/subcategorys.js"></script> 
 </body>
 </html>

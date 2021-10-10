@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-const {subcategory} = require("../controllers/apiController");
+const {categorys} = require("../controllers/apiController");
 
-router.get("/subcategory", subcategory);
+router.get("/categories", categorys);
 
 module.exports = router;
