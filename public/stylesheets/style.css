@@ -1,12 +1,14 @@
 @import "./header.css";
 @import "./footer.css";
+@import "./product.css";
 
 @import "./home/banner.css";
 @import "./home/brands.css";
-@import "./home/product-featured.css";
 
 @import "./users/auth.css";
 @import "./users/profile.css";
+
+@import "./products/detail.css";
 
 @import "./admin/tables.css";
 
@@ -29,6 +31,10 @@ body {
 	--colorCeleste: #8FD9A8;
 	--colorVerde: #D2E69C;
 	--colorNegro: #212121;
+}
+
+ul {
+	padding-inline-start: 0;
 }
 
 li {

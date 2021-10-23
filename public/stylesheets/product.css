@@ -1,4 +1,4 @@
-main.home .product-featured .featured-content {
+.product .product-content {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -7,31 +7,31 @@ main.home .product-featured .featured-content {
     border-radius: 1rem;
 }
 
-main.home .product-featured .featured-content:hover {
+.product .product-content:hover {
     background-color: var(--colorCeleste);
 }
 
-main.home .product-featured .featured-content img {
+.product .product-content img {
     width: 12.5rem;
     height: 12.5rem;
     border-radius: 50%;
     object-fit: cover;
 }
 
-main.home .product-featured .featured-content .data-product {
+.product .product-content .data-product {
     padding: 0 1rem;
 }
 
-main.home .product-featured .featured-content .data-product h2 {
+.product .product-content .data-product h2 {
     color: var(--colorAzul);
 }
 
-main.home .product-featured .featured-content .data-product h2 span {
+.product .product-content .data-product h2 span {
     margin-left: .6rem;
     font-size: 1rem;
 }
 
-main.home .product-featured .featured-content .data-product p {
+.product .product-content .data-product p {
     width: 9rem;
     font-size: .8rem;
     overflow: hidden;

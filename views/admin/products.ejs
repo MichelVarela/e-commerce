@@ -21,9 +21,7 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Descuento</th>
                 <th scope="col">Stock</th>
-                <th scope="col">Envio</th>
-                <th scope="col">Destacado</th>
-                <th scope="col">Activo</th>
+                <th scope="col">Estado (activo, in-activo)</th>
                 <th scope="col">#</th>
               </tr>
             </thead>
@@ -31,30 +29,10 @@
               <% products.forEach(result => { %> 
               <tr>
                 <th scope="row"><%= result.id %></th>
-                <td><a href=""><%= result.name %></a></td>
+                <td><a href="/products/detail/<%= result.id %>/<%= result.name %>"><%= result.name %></a></td>
                 <td>$<%= toThousand(result.price) %></td>
-                <td>
-                  <% if (result.discount == 0){ %>
-                    <i class="fas fa-times"></i>
-                  <% } else { %>
-                    <%= result.discount %>% 
-                  <% } %>
-                </td>
+                <td><%= result.discount == 0 ? "-" : `${result.discount}%` %></td>
                 <td><%= result.stock %>u.</td>
-                <td>
-                  <% if (result.shipping == 0){ %>
-                    <i class="fas fa-times"></i>
-                  <% } else { %>
-                    <i class="fas fa-check"></i>
-                  <% } %> 
-                </td>
-                <td>
-                  <% if (result.featured == 0){ %>
-                    <i class="fas fa-times"></i>
-                  <% } else { %>
-                    <i class="fas fa-check"></i>
-                  <% } %>
-                </td>
                 <td>
                     <form action="/products/update/<%= result.id %>?_method=PUT" method="POST">
                         <div class="d-flex">

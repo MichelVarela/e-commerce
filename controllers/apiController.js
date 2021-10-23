@@ -6,10 +6,11 @@ const getUrlBase  = (req) => req.protocol + '://' + req.get('host'); // ruta bas
 module.exports = {
     categorys: (req,res) => {
 
-        db.Category_subcategory.findAll({
-            include: [{ association: "fk_category"}, { association: "fk_subcategory"}]
-        })
-        .then(categorys => {
+        let categorys = db.Category.findAll();
+        let subcategorys = db.Subcategory.findAll();
+
+        Promise.all([categorys, subcategorys])
+        .then(([categorys, subcategorys]) => {
 
             let response = {
                 meta: {
@@ -17,7 +18,10 @@ module.exports = {
                     link: getUrl(req),
                     back: getUrlBase(req)
                 },
-                data: categorys
+                data: {
+                    categorys,
+                    subcategorys
+                }
             }
 
             return res.status(200).json(response)

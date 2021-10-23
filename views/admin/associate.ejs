@@ -23,6 +23,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Subcategoria</th>
+                    <th scope="col">#</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,11 @@
                             <th><%= element.id %></th>
                             <td><%= element.fk_category.name %></td>
                             <td><%= element.fk_subcategory.name %></td>
+                            <td>
+                                <form action="/admin/associate/remove/<%= element.id %>?_method=DELETE" method="POST">
+                                    <button type="submit" class="delete"> delete </button>
+                                </form>
+                            </td>
                         </tr>
                     <% }) %>
                 </tbody>

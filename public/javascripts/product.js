@@ -1,10 +1,10 @@
-new Glider(document.querySelector('.product-featured .glider'), {
+new Glider(document.querySelector('.product .glider'), {
     slidesToShow: 1,
     slidesToScroll: 1,
-    dots: '.product-featured .dots',
+    dots: '.product .dots',
     arrows: {
-        prev: '.product-featured .glider-prev',
-        next: '.product-featured .glider-next'
+        prev: '.product .glider-prev',
+        next: '.product .glider-next'
     },
     responsive: [
         {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include("./partials/head") %> 
+<body>
+  <%- include("./partials/header") %>
+
+  <main class="container search">
+
+    <h2 class="mb-5">Resultados de busqueda</h2>
+
+    <div class="product">
+      <div class="glider-contain">
+        <div class="glider">
+          <% products.forEach(product => { %>
+            <a href="/products/detail/<%= product.id %>/<%= product.name %>">
+              <div class="product-content">
+                <img src="/images/products/<%= product.fk_image[0].name %>" alt="Photo of">
+                <hr>
+                <div class="data-product">
+                  <h2 class="d-flex align-items-center">$<%= toThousand(product.price) %> <span class="text-success"> <%= product.discount == 0 ? null : `${product.discount}%` %> </span>
+                  </h2>
+                  <h4><%= product.name %></h4>
+                  <p><%= product.description %></p>
+                </div>
+              </div>
+            </a>
+          <% }) %>
+        </div>
+      
+        <button aria-label="Previous" class="glider-prev">«</button>
+        <button aria-label="Next" class="glider-next">»</button>
+        <div role="tablist" class="dots"></div>
+      </div>
+    </div>
+
+
+  </main>
+
+  <%- include("./partials/footer") %> 
+  
+  <%- include("./partials/scripts") %> 
+</body>
+</html>

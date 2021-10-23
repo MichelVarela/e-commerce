@@ -5,3 +5,7 @@ header {
     width: 100%;
     z-index: 99;
 }
+
+.header-categories li {
+    text-transform: capitalize;
+}

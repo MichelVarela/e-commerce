@@ -65,12 +65,12 @@
 
     <h2 class="mb-5">Nuestra recomendadas</h2>
 
-    <div class="product-featured">
+    <div class="product">
       <div class="glider-contain">
         <div class="glider">
           <% products.forEach(product => { %>
-            <a href="#">
-              <div class="featured-content">
+            <a href="/products/detail/<%= product.id %>/<%= product.name %>">
+              <div class="product-content">
                 <img src="/images/products/<%= product.fk_image[0].name %>" alt="Photo of">
                 <hr>
                 <div class="data-product">
@@ -96,5 +96,6 @@
   <%- include("./partials/footer") %> 
   
   <%- include("./partials/scripts") %> 
+  <script src="/javascripts/brands.js"></script>
 </body>
 </html>

@@ -158,6 +158,17 @@ module.exports = {
         })
         .catch(error => console.log(error));
     },
+    associate_delete: (req,res) => {
+
+        db.Category_subcategory.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(() => res.redirect("/admin/associate"))
+        .catch(error => console.log(error));
+        
+    },
     process_associate: (req,res) => {
 
         const {categoryId, subcategoryId} = req.body;

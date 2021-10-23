@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("../partials/head") %> 
+<body>
+    <%- include("../partials/header") %>
+    
+    <main class="container detail">
+        
+        <ul class="route">
+            <li><a href="/"><i class="fas fa-home"></i> |</a></li>
+            <li><a href="/products/categorys/<%= category.id %>"><%= category.name %> ></a></li>
+            <li><a href="/products/subcategorys/<%= subcategory.id %>"><%= subcategory.name %> :</a></li>
+        </ul>
+        <hr>
+        <h2 class="mb-3"><%= product.name %>
+            <% if (typeof user != "undefined" && user.category == 1) { %>
+                <a href="/products/update/<%= product.id %>/<%= product.name %>"> <i class="fas fa-pen-square text-success edit"></i> </a>
+            <% } %> 
+        </h2>
+        <hr>
+
+        <section class="product-detail">
+            <div class="carousel-img">
+                <div class="glider-contain">
+                    <div class="glider">
+                      <% product.fk_image.forEach(img => { %>
+                        <img src="/images/products/<%= img.name %>" alt="<%= img.name %>">
+                        <% }) %>  
+                    </div>
+                  
+                    <button aria-label="Previous" class="glider-prev">«</button>
+                    <button aria-label="Next" class="glider-next">»</button>
+                    <div role="tablist" class="dots"></div>
+                  </div>
+            </div>
+
+            <article>
+                <h1>$<%= toThousand(product.price) %></h1>
+                <h4 class="text-success"><%= product.discount ? `${product.discount}%Off` : null %></h4>
+                <% if (product.shipping) { %>
+                    <p class="text-success"><i class="fas fa-truck"></i> <i class="fas fa-check-circle"></i></p> 
+                <% } else { %>
+                    <p class="text-danger"><i class="fas fa-truck"></i> <i class="fas fa-times-circle"></i></p> 
+                <% } %>   
+                <p class="stock">STOCK DISPONIBLE: <%= product.stock %></p>
+
+                <hr>
+
+                <p><%= product.description %></p>
+            </article>
+            
+        </section>
+        
+    </main>
+    
+    <%- include("../partials/footer") %>
+    
+    <%- include('../partials/scripts') %>
+    <script src="/javascripts/product-detail.js"></script>
+</body>
+</html>
